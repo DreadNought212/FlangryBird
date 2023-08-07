@@ -1,0 +1,36 @@
+import pygame
+from images import *
+from pipes import *
+
+pygame.init()
+
+WIN_WIDTH = 400
+WIN_HEIGHT = 600
+
+footer_x = 0
+
+clock = pygame.time.Clock()
+
+window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+
+def main():
+
+    footer_x = 0
+    window.blit(bg_rect, (-80, 0))
+    run = True
+
+    while run:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+
+        window.blit(footer_rect, (footer_x, 450))
+        footer_x -= 5
+        if footer_x <= - 400:
+            footer_x = 0
+        clock.tick(60)
+
+        pygame.display.update()
+
+main()
